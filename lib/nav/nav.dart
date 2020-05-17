@@ -17,7 +17,7 @@ class _NavBarState extends State<NavBar> {
   ];
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    // TODO: 底部导航栏
     return Scaffold(
       appBar: AppBar(
         title: Text('codeHouse')
