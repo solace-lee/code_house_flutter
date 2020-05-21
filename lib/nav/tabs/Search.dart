@@ -20,12 +20,21 @@ class _SearchListState extends State<SearchList> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TextField(
-          decoration: InputDecoration(
-            icon: Icon(Icons.search)
-          )
+        Container(
+          height: 60,
+          decoration: BoxDecoration(
+              color: Colors.blueAccent
+          ),
+          child: TextField(
+              decoration: InputDecoration(
+                  icon: Icon(Icons.search)
+              )
+          ),
         ),
-        SearchItem()
+        Container(
+          height: 400,
+          child: SearchItem(),
+        )
       ],
     );
   }
@@ -41,12 +50,17 @@ class SearchItem extends StatefulWidget {
 class _SearchItemState extends State<SearchItem> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        ListTile(
-          title: Text('列表项')
-        )
-      ],
+    return Container(
+      child: ListView(
+        children: <Widget>[
+          ListTile(
+              title: Text('列表项')
+          ),
+          ListTile(
+              title: Text('列表项')
+          )
+        ],
+      ),
     );
   }
 }
