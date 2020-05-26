@@ -16,26 +16,42 @@ class SearchList extends StatefulWidget {
 }
 
 class _SearchListState extends State<SearchList> {
+  var keyWords;
+
   @override
+  void initState() {
+    super.initState();
+  }
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 60,
-          decoration: BoxDecoration(
-              color: Colors.blueAccent
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Row(
+        children: <Widget>[
+          TextField(
+            decoration: InputDecoration(
+              hintText: '请输入公司名',
+              prefixIcon: Icon(Icons.search),
+              // border: InputBorder
+            ),
+            // controller: username,
+            onChanged: (value) {
+              setState(() {
+                this.keyWords = value;
+              });
+            },
           ),
-          child: TextField(
-              decoration: InputDecoration(
-                  icon: Icon(Icons.search)
-              )
-          ),
-        ),
-        Container(
-          height: 400,
-          child: SearchItem(),
-        )
-      ],
+          SizedBox(height: 20),
+          Container(
+            // width: double.infinity,
+            child: RaisedButton(
+              child: Text('搜索'),
+              onPressed: () {
+                print(this.keyWords);
+              },
+            ),
+          )
+        ]
+      )
     );
   }
 }
