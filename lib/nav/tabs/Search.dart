@@ -25,7 +25,7 @@ class _SearchListState extends State<SearchList> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(20),
-      child: Row(
+      child: Column(
         children: <Widget>[
           TextField(
             decoration: InputDecoration(
@@ -49,7 +49,8 @@ class _SearchListState extends State<SearchList> {
                 print(this.keyWords);
               },
             ),
-          )
+          ),
+          SizedBox(height: 20),
         ]
       )
     );
