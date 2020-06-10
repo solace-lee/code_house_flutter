@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
 
 class SearchPage extends StatelessWidget {
   @override
@@ -18,6 +20,18 @@ class SearchList extends StatefulWidget {
 class _SearchListState extends State<SearchList> {
   var keyWords;
 
+  loadData(keys) async {
+    // String url = 'https://api.cleanown.cn/student/get?hotkey=$keys';
+    String url = 'https://api.cleanown.cn/student/get';
+    var dio=Dio();
+    dio.transformer = new FlutterTransformer(); // replace dio default transformer
+    Response response = await dio.get(url, queryParameters: {'hotkey': '古鹏'});
+
+    print(response);
+  }
+
+
+
   @override
   void initState() {
     super.initState();
@@ -25,14 +39,18 @@ class _SearchListState extends State<SearchList> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(20),
-      child: Column(
+      child: ListView(
         children: <Widget>[
           TextField(
             decoration: InputDecoration(
-              hintText: '请输入公司名',
+              hintText: '请输入完整的学生姓名',
               prefixIcon: Icon(Icons.search),
               // border: InputBorder
             ),
+            onSubmitted: (value) {
+              print(this.keyWords + value + '测试');
+              this.loadData(value);
+            },
             // controller: username,
             onChanged: (value) {
               setState(() {
@@ -40,44 +58,20 @@ class _SearchListState extends State<SearchList> {
               });
             },
           ),
-          SizedBox(height: 20),
-          Container(
-            // width: double.infinity,
-            child: RaisedButton(
-              child: Text('搜索'),
-              onPressed: () {
-                print(this.keyWords);
-              },
-            ),
-          ),
-          SizedBox(height: 20),
+          SearchItem()
         ]
       )
     );
   }
 }
 
-class SearchItem extends StatefulWidget {
-  SearchItem({Key key}) : super(key: key);
+class SearchItem extends StatelessWidget {
+  const SearchItem({Key key}) : super(key: key);
 
-  @override
-  _SearchItemState createState() => _SearchItemState();
-}
-
-class _SearchItemState extends State<SearchItem> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView(
-        children: <Widget>[
-          ListTile(
-              title: Text('列表项')
-          ),
-          ListTile(
-              title: Text('列表项')
-          )
-        ],
-      ),
+    return ListTile(
+        title: Text('列表项')
     );
   }
 }
