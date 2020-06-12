@@ -1,4 +1,5 @@
 import 'package:codehouseflutter/model/search/searchModel.dart';
+import 'package:codehouseflutter/request/api.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
@@ -22,11 +23,10 @@ class _SearchListState extends State<SearchList> {
   var keyWords;
 
   loadData(keys) async {
-    String url = 'https://api.cleanown.cn/student/get';
     var dio=Dio();
     dio.transformer = new FlutterTransformer(); // replace dio default transformer
-    Response response = await dio.get(url, queryParameters: {'hotkey': '古鹏'});
-    print(SearchModel.fromJson(response.data).studentList[0].mark);
+    Response response = await dio.get(searchStudent, queryParameters: {'hotkey': '古鹏'});
+    print(SearchModel.fromJson(response.data).studentList[0].id);
     // obj.runtimeType.toString() 判断数据类型
     try {
       print('对了');
