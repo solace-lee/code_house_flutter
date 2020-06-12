@@ -1,8 +1,9 @@
 import 'package:codehouseflutter/model/search/searchModel.dart';
 import 'package:codehouseflutter/request/api.dart';
+import 'package:codehouseflutter/request/http.dart';
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
+// import 'package:dio/dio.dart';
+// import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
 
 class SearchPage extends StatelessWidget {
   @override
@@ -22,25 +23,28 @@ class SearchList extends StatefulWidget {
 class _SearchListState extends State<SearchList> {
   var keyWords;
 
-  loadData(keys) async {
-    var dio=Dio();
-    dio.transformer = new FlutterTransformer(); // replace dio default transformer
-    Response response = await dio.get(searchStudent, queryParameters: {'hotkey': '古鹏'});
-    print(SearchModel.fromJson(response.data).studentList[0].id);
-    // obj.runtimeType.toString() 判断数据类型
-    try {
-      print('对了');
-    } catch (e) {
-      print(e);
-    }
-  }
-
-
-
   @override
   void initState() {
     super.initState();
   }
+
+  loadData(keys) async {
+    DioManager.getInstance().get(
+      searchStudent, {'hotkey': '古鹏'},
+      (data) {
+        print(SearchModel.fromJson(data).studentList[0].id);
+        // obj.runtimeType.toString() 判断数据类型
+        // setState(() {
+        //  更新UI等
+        // });
+      },
+      //错误回调
+      (error){
+        
+      }
+    );
+  }
+
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(20),
