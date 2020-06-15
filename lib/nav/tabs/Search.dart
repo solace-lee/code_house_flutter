@@ -1,9 +1,7 @@
 import 'package:codehouseflutter/model/search/searchModel.dart';
-import 'package:codehouseflutter/request/api.dart';
-import 'package:codehouseflutter/request/http.dart';
+import 'package:codehouseflutter/model/search/studentModel.dart';
+import 'package:codehouseflutter/request/request.dart';
 import 'package:flutter/material.dart';
-// import 'package:dio/dio.dart';
-// import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
 
 class SearchPage extends StatelessWidget {
   @override
@@ -21,7 +19,7 @@ class SearchList extends StatefulWidget {
 }
 
 class _SearchListState extends State<SearchList> {
-  var keyWords;
+  List<StudentModel> studentList = [];
 
   @override
   void initState() {
@@ -29,19 +27,24 @@ class _SearchListState extends State<SearchList> {
   }
 
   loadData(keys) async {
-    DioManager.getInstance().get(
-      searchStudent, {'hotkey': '古鹏'},
-      (data) {
-        print(SearchModel.fromJson(data).studentList[0].id);
-        // obj.runtimeType.toString() 判断数据类型
-        // setState(() {
-        //  更新UI等
-        // });
-      },
-      //错误回调
-      (error){
-        
-      }
+    Request().getSearchList(keys, (data){
+      setState(() {
+        this.studentList = SearchModel.fromJson(data).studentList;
+      });
+    });
+  }
+
+  _searchItem({studentList: List}) {
+    List<Widget> widgets = [];
+    for (int i = 0; i < studentList.length; i++ ) {
+      widgets.add(
+        ListTile(
+            title: Text(studentList[i].studentname)
+        )
+      );
+    }
+    return Column(
+      children: widgets
     );
   }
 
@@ -57,30 +60,17 @@ class _SearchListState extends State<SearchList> {
               // border: InputBorder
             ),
             onSubmitted: (value) {
-              print(this.keyWords + value + '测试');
               this.loadData(value);
             },
             // controller: username,
             onChanged: (value) {
-              setState(() {
-                this.keyWords = value;
-              });
+              // this.loadData(value);
             },
           ),
-          SearchItem()
+          _searchItem(studentList: this.studentList)
         ]
       )
     );
   }
 }
 
-class SearchItem extends StatelessWidget {
-  const SearchItem({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-        title: Text('列表项')
-    );
-  }
-}

@@ -2,15 +2,6 @@ import 'package:codehouseflutter/main.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
 
-void getHttp() async {
-  try {
-    Response response = await Dio().get("http://www.google.cn");
-    print(response);
-  } catch (e) {
-    print(e);
-  }
-}
-
 class DioManager {
   static DioManager _instance;
 
@@ -44,7 +35,7 @@ class DioManager {
   }
 
   _requestHttp(String url, Function successCallBack,
-    [String method, params, Function errorCallBack]) async {
+    [String method, dynamic params, Function errorCallBack]) async {
       Response response;
       try {
         if (method == 'get') {
