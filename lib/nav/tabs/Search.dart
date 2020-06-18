@@ -27,7 +27,7 @@ class _SearchListState extends State<SearchList> {
   }
 
   loadData(keys) async {
-    Request().getSearchList(keys, (data){
+    Request().getSearchList(keys, (data) {
       setState(() {
         this.studentList = SearchModel.fromJson(data).studentList;
       });
@@ -36,23 +36,66 @@ class _SearchListState extends State<SearchList> {
 
   _searchItem({studentList: List}) {
     List<Widget> widgets = [];
-    for (int i = 0; i < studentList.length; i++ ) {
-      widgets.add(
-        ListTile(
-            title: Text(studentList[i].studentname)
-        )
-      );
+    for (int i = 0; i < studentList.length; i++) {
+      widgets.add(Card(
+          elevation: 4.0,
+          child: Column(children: <Widget>[
+            ListTile(
+              title: Text(studentList[i].mark),
+              subtitle: Text(
+                  studentList[i].studentname + ' ' + studentList[i].studentid),
+            ),
+            Divider(),
+            Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 10.0,
+                runSpacing: 10.0,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: _detailItem(
+                    studentList[i].keywords, studentList[i].detail)),
+            Divider(),
+            Text(
+              studentList[i].createuser,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Color.fromRGBO(100, 100, 100, 0.8),
+              ),
+            ),
+            ListTile(
+              dense: true,
+              subtitle: Text(studentList[i].meta['updateAt'].toString()),
+              // title: Text(DateTime.fromMillisecondsSinceEpoch(studentList[i].meta['updateAt'])),
+            ),
+          ])));
     }
-    return Column(
-      children: widgets
-    );
+    return Column(children: widgets);
+  }
+
+  _detailItem(keywords, detail) {
+    List<Widget> widget = [];
+    for (int i = 0; i < keywords.length; i++) {
+      widget.add(Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            keywords[i].toString(),
+            style: TextStyle(
+                // backgroundColor: Color.fromRGBO(200, 200, 200, 1),
+                color: Color.fromRGBO(100, 100, 100, 1),
+                decorationStyle: TextDecorationStyle.solid),
+          ),
+          Text(detail[i].toString())
+        ],
+      ));
+    }
+    ;
+    return widget;
   }
 
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
-      child: ListView(
-        children: <Widget>[
+        padding: EdgeInsets.all(20),
+        child: ListView(children: <Widget>[
           TextField(
             decoration: InputDecoration(
               hintText: '请输入完整的学生姓名',
@@ -68,9 +111,6 @@ class _SearchListState extends State<SearchList> {
             },
           ),
           _searchItem(studentList: this.studentList)
-        ]
-      )
-    );
+        ]));
   }
 }
-

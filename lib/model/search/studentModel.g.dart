@@ -8,13 +8,16 @@ part of 'studentModel.dart';
 
 StudentModel _$StudentModelFromJson(Map<String, dynamic> json) {
   return StudentModel(
-    keywords: json['keywords'] as List,
-    detail: json['detail'] as List,
+    keywords: (json['keywords'] as List)?.map((e) => e as String)?.toList(),
+    detail: (json['detail'] as List)?.map((e) => e.toString())?.toList(),
     id: json['_id'] as String,
     studentname: json['studentname'] as String,
     studentid: json['studentid'] as String,
     createuser: json['createuser'] as String,
     mark: json['mark'] as String,
+    meta: (json['meta'] as Map<String, dynamic>)?.map(
+      (k, e) => MapEntry(k, e as String),
+    ),
   );
 }
 
@@ -27,4 +30,5 @@ Map<String, dynamic> _$StudentModelToJson(StudentModel instance) =>
       'studentid': instance.studentid,
       'createuser': instance.createuser,
       'mark': instance.mark,
+      'meta': instance.meta,
     };
