@@ -15,9 +15,11 @@ StudentModel _$StudentModelFromJson(Map<String, dynamic> json) {
     studentid: json['studentid'] as String,
     createuser: json['createuser'] as String,
     mark: json['mark'] as String,
-    meta: (json['meta'] as Map<String, dynamic>)?.map(
-      (k, e) => MapEntry(k, e as String),
-    ),
+    meta: json['meta'] == null
+        ? null
+        : MetaModel.fromJson((json['meta'] as Map<String, dynamic>)?.map(
+            (k, e) => MapEntry(k, int.parse(e)),
+          )),
   );
 }
 
@@ -31,4 +33,14 @@ Map<String, dynamic> _$StudentModelToJson(StudentModel instance) =>
       'createuser': instance.createuser,
       'mark': instance.mark,
       'meta': instance.meta,
+    };
+
+MetaModel _$MetaModelFromJson(Map<String, dynamic> json) {
+  return MetaModel(
+    updateAt: json['updateAt'] as int,
+  );
+}
+
+Map<String, dynamic> _$MetaModelToJson(MetaModel instance) => <String, dynamic>{
+      'updateAt': instance.updateAt,
     };

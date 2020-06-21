@@ -20,7 +20,7 @@ class _NavBarState extends State<NavBar> {
     // TODO: 底部导航栏
     return Scaffold(
       appBar: AppBar(
-        title: Text('codeHouse')
+        title: Text('学生成绩查询系统')
       ),
       body: this._listPage[this._currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -33,7 +33,7 @@ class _NavBarState extends State<NavBar> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('搜索')),
           BottomNavigationBarItem(icon: Icon(Icons.library_add), title: Text('发布')),
-          BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('我的')),
+          BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('管理')),
         ],
       ),
     );

@@ -20,6 +20,7 @@ class SearchList extends StatefulWidget {
 
 class _SearchListState extends State<SearchList> {
   List<StudentModel> studentList = [];
+  final int x = 1524567890;
 
   @override
   void initState() {
@@ -48,23 +49,19 @@ class _SearchListState extends State<SearchList> {
             Divider(),
             Wrap(
                 alignment: WrapAlignment.center,
-                spacing: 10.0,
-                runSpacing: 10.0,
+                spacing: 0,
+                runSpacing: 4.0,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: _detailItem(
                     studentList[i].keywords, studentList[i].detail)),
             Divider(),
-            Text(
-              studentList[i].createuser,
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: Color.fromRGBO(100, 100, 100, 0.8),
-              ),
-            ),
             ListTile(
               dense: true,
-              subtitle: Text(studentList[i].meta['updateAt'].toString()),
-              // title: Text(DateTime.fromMillisecondsSinceEpoch(studentList[i].meta['updateAt'])),
+              title: Text('创建人:' + studentList[i].createuser),
+              subtitle: Text('创建日期:' +
+                  DateTime.fromMillisecondsSinceEpoch(
+                          studentList[i].meta.updateAt)
+                      .toString()),
             ),
           ])));
     }
@@ -74,27 +71,37 @@ class _SearchListState extends State<SearchList> {
   _detailItem(keywords, detail) {
     List<Widget> widget = [];
     for (int i = 0; i < keywords.length; i++) {
-      widget.add(Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            keywords[i].toString(),
-            style: TextStyle(
-                // backgroundColor: Color.fromRGBO(200, 200, 200, 1),
-                color: Color.fromRGBO(100, 100, 100, 1),
-                decorationStyle: TextDecorationStyle.solid),
-          ),
-          Text(detail[i].toString())
-        ],
-      ));
+      widget.add(Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Color.fromRGBO(200, 200, 200, 0.6),
+            width: 1.0,
+            style: BorderStyle.solid
+          )
+        ),
+        height: 50,
+        padding: EdgeInsets.fromLTRB(6, 2, 6, 2),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              keywords[i],
+              style: TextStyle(
+                  // backgroundColor: Color.fromRGBO(200, 200, 200, 1),
+                  color: Color.fromRGBO(100, 100, 100, 1),
+              ),
+            ),
+            Text(detail[i])
+          ],
+        )));
     }
-    ;
     return widget;
   }
 
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.fromLTRB(5, 20, 5, 20),
         child: ListView(children: <Widget>[
           TextField(
             decoration: InputDecoration(
