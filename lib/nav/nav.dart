@@ -1,5 +1,4 @@
 import 'package:codehouseflutter/nav/tabs/Search.dart';
-import 'package:codehouseflutter/nav/tabs/Me.dart';
 import 'package:codehouseflutter/nav/tabs/Add.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +11,7 @@ class _NavBarState extends State<NavBar> {
   int _currentIndex = 0;
   List _listPage = [
     SearchPage(),
-    AddPage(),
-    MePage()
+    AddPage()
   ];
   @override
   Widget build(BuildContext context) {
@@ -31,9 +29,8 @@ class _NavBarState extends State<NavBar> {
           });
         },
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('搜索')),
-          BottomNavigationBarItem(icon: Icon(Icons.library_add), title: Text('发布')),
-          BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('管理')),
+          BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('查询')),
+          BottomNavigationBarItem(icon: Icon(Icons.library_add), title: Text('管理'))
         ],
       ),
     );
