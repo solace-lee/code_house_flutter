@@ -10,8 +10,12 @@ class AddPage extends StatefulWidget {
 class _AddPageState extends State<AddPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: Text('发布页'),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Text('去学习'),
+        onPressed: () {
+          Navigator.pushNamed(context, '/search');
+        }),
     );
   }
 }

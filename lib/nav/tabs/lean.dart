@@ -25,7 +25,9 @@ class _LeanPageState extends State<LeanPage> {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return MyExam(title: '跳转传值',);
+                    return MyExam(
+                      title: '跳转传值',
+                    );
                   }));
                 })
           ],
@@ -39,12 +41,14 @@ class _LeanPageState extends State<LeanPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 20.0,
-        childAspectRatio: 0.7,
-        mainAxisSpacing: 20.0,
-        padding: EdgeInsets.all(20),
-        children: this._getListData());
+    return Scaffold(
+        appBar: AppBar(title: Text('学习页')),
+        body: GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 20.0,
+            childAspectRatio: 0.7,
+            mainAxisSpacing: 20.0,
+            padding: EdgeInsets.all(20),
+            children: this._getListData()));
   }
 }

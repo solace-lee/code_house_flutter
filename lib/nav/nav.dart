@@ -1,6 +1,6 @@
 import 'package:codehouseflutter/nav/tabs/Search.dart';
 import 'package:codehouseflutter/nav/tabs/Add.dart';
-import 'package:codehouseflutter/nav/tabs/lean.dart';
+// import 'package:codehouseflutter/nav/tabs/lean.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
@@ -13,7 +13,7 @@ class _NavBarState extends State<NavBar> {
   List _listPage = [
     SearchPage(),
     AddPage(),
-    LeanPage()
+    // LeanPage()
   ];
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _NavBarState extends State<NavBar> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('查询')),
           BottomNavigationBarItem(icon: Icon(Icons.library_add), title: Text('管理')),
-          BottomNavigationBarItem(icon: Icon(Icons.library_add), title: Text('学习'))
+          // BottomNavigationBarItem(icon: Icon(Icons.library_add), title: Text('学习'))
         ],
       ),
     );
