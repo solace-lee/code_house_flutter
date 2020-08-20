@@ -14,7 +14,7 @@ class _AddPageState extends State<AddPage> {
       floatingActionButton: FloatingActionButton(
         child: Text('去学习'),
         onPressed: () {
-          Navigator.pushNamed(context, '/search');
+          Navigator.pushNamed(context, '/lean');
         }),
     );
   }

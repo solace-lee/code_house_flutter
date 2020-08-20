@@ -1,6 +1,6 @@
 import 'package:codehouseflutter/nav/tabs/listData.dart';
 import 'package:flutter/material.dart';
-import '../myExam.dart';
+import 'myExam.dart';
 
 class LeanPage extends StatefulWidget {
   const LeanPage({Key key}) : super(key: key);
