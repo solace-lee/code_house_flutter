@@ -21,7 +21,7 @@ import 'package:flutter/material.dart';
 // }
 
 class MyExam extends StatefulWidget {
-Map arguments;
+  final Map arguments;
   MyExam({Key key, this.arguments}) : super(key : key);
   @override
   _MyExamState createState() => _MyExamState(arguments: this.arguments);
