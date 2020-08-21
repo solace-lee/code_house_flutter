@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'routes.dart';
 
 class GlobalConfig {
-  static bool isDebug = true;//是否是调试模式
+  static bool isDebug = true; //是否是调试模式
   static bool dark = false;
   static Color fontColor = Colors.black54;
 }
@@ -13,12 +13,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '学生成绩查询系统',
-      routes: routes,
-      initialRoute: '/home',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      )
-    );
+        title: '学生成绩查询系统',
+        routes: routes,
+        initialRoute: '/home',
+        onGenerateRoute: (RouteSettings settings) {
+          final String name = settings.name;
+          final Function pageContentBuilder = routes[name];
+          if (pageContentBuilder != null) {
+            if (settings.arguments != null) {
+              final Route route = MaterialPageRoute(
+                  builder: (context) =>
+                      pageContentBuilder(
+                          context, arguments: settings.arguments));
+              return route;
+            } else {
+              final Route route = MaterialPageRoute(
+                  builder: (context) => pageContentBuilder(context)
+              );
+              return route;
+            }
+          }
+        },
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ));
   }
 }

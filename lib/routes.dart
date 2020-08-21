@@ -4,6 +4,6 @@ import 'nav/nav.dart';
 
 final routes = {
     '/home': (context) => NavBar(),
-    '/myExam': (context) => MyExam(),
+    '/myExam': (context, {argments}) => MyExam(argments: argments),
     '/lean': (context) => LeanPage()
  };

@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
 class MyExam extends StatelessWidget {
-  // const MyExam({Key key}) : super(key: key);
-  String title;
-  MyExam({
-    this.title="表单"
-  });
+    var argments;
+//    const MyExam({Key key, this.argments}) : super(key: key);
+    MyExam({ argments }) {
+      argments = argments;
+    }
+
+//  String title;
+//  MyExam({
+//    this.title="表单"
+//  });
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(this.title)),
+      appBar: AppBar(title: Text(this.argments['title'])),
       body: Container(child: Text('我的试卷页')),
       floatingActionButton: FloatingActionButton(
         child: Text('返回'),

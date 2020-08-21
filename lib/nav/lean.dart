@@ -23,12 +23,15 @@ class _LeanPageState extends State<LeanPage> {
                 child: Text('跳转到试卷页'),
                 textColor: Colors.blue,
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return MyExam(
-                      title: '跳转传值',
-                    );
-                  }));
+                    Navigator.pushNamed(context, '/myExam', arguments: {
+                      'title':'haha,成功了'
+                    });
+//                  Navigator.of(context)
+//                      .push(MaterialPageRoute(builder: (context) {
+//                    return MyExam(
+//                      argments: 'haha,成功了',
+//                    );
+//                  }));
                 })
           ],
         ),
