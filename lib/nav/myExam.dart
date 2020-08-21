@@ -1,49 +1,48 @@
 import 'package:flutter/material.dart';
 
-class MyExam extends StatelessWidget {
-    var argments;
-//    const MyExam({Key key, this.argments}) : super(key: key);
-    MyExam({ argments }) {
-      argments = argments;
-    }
-
-//  String title;
-//  MyExam({
-//    this.title="表单"
-//  });
+// class MyExam extends StatelessWidget {
+//     final argments;
+//     MyExam({ this.argments });
 
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(this.argments['title'])),
-      body: Container(child: Text('我的试卷页')),
-      floatingActionButton: FloatingActionButton(
-        child: Text('返回'),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
-    );
-  }
-}
-
-// class MyExam extends StatefulWidget {
-//   MyExam({Key key}) : super(key: key);
-
-//   @override
-//   _MyExamState createState() => _MyExamState();
-// }
-
-// class _MyExamState extends State<MyExam> {
-//   String title;
-//   _MyExamState({
-//     this.title="表单"
-//   });
 //   @override
 //   Widget build(BuildContext context) {
-//     return Container(
-//        child: Text('我的试卷页？'),
+//     return Scaffold(
+//       appBar: AppBar(title: Text('haha')),
+//       body: Container(child: Text('我的试卷页')),
+//       floatingActionButton: FloatingActionButton(
+//         child: Text('返回'),
+//         onPressed: () {
+//           // Navigator.of(context).pop();
+//         },
+//       ),
 //     );
 //   }
 // }
+
+class MyExam extends StatefulWidget {
+Map arguments;
+  MyExam({Key key, this.arguments}) : super(key : key);
+  @override
+  _MyExamState createState() => _MyExamState(arguments: this.arguments);
+}
+
+class _MyExamState extends State<MyExam> {
+  Map arguments;
+  _MyExamState({this.arguments});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(arguments != null ? arguments['title'] : '没有标题')
+      ),
+      body: Container(
+       child: RaisedButton(
+        child: Text('返回'),
+        onPressed: () {
+          Navigator.of(context).pop();
+       }),
+      )
+    );
+  }
+}
