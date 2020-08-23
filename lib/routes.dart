@@ -1,7 +1,7 @@
+import 'package:codehouseflutter/routes/lean.dart';
+import 'package:codehouseflutter/routes/myExam.dart';
+import 'package:codehouseflutter/routes/nav.dart';
 import 'package:flutter/material.dart';
-import 'nav/lean.dart';
-import 'nav/nav.dart';
-import 'nav/myExam.dart';
 
 // 配置路由
 final routes = {

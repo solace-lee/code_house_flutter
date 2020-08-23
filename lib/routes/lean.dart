@@ -1,4 +1,4 @@
-import 'package:codehouseflutter/nav/tabs/listData.dart';
+import 'package:codehouseflutter/routes/tabs/listData.dart';
 import 'package:flutter/material.dart';
 
 class LeanPage extends StatefulWidget {

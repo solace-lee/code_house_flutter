@@ -1,6 +1,6 @@
-import 'package:codehouseflutter/nav/tabs/Search.dart';
-import 'package:codehouseflutter/nav/tabs/Add.dart';
 // import 'package:codehouseflutter/nav/tabs/lean.dart';
+import 'package:codehouseflutter/routes/tabs/Add.dart';
+import 'package:codehouseflutter/routes/tabs/Search.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: '学生成绩查询系统',
         // routes: routes,
-        initialRoute: '/home',
+        initialRoute: '/lean',
         onGenerateRoute: onGenerateRoute,
         theme: ThemeData(
           primarySwatch: Colors.blue,
