@@ -1,6 +1,7 @@
+import 'package:codehouseflutter/common/request/request.dart';
 import 'package:codehouseflutter/model/search/searchModel.dart';
 import 'package:codehouseflutter/model/search/studentModel.dart';
-import 'package:codehouseflutter/request/request.dart';
+
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {

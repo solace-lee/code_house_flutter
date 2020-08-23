@@ -1,5 +1,5 @@
-import 'package:codehouseflutter/request/api.dart';
-import 'package:codehouseflutter/request/http.dart';
+import 'api.dart';
+import 'http.dart';
 
 class Request {
   getSearchList(String keys, Function func) async {
