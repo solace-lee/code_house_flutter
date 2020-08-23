@@ -19,7 +19,20 @@ class _LeanPageState extends State<LeanPage> {
               style: TextStyle(fontSize: 16),
             ),
             RaisedButton(
-                child: Text('跳转到试卷页'),
+                child: Text.rich(TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '去吗?',
+                      style: TextStyle(
+                        color: Colors.grey
+                      )
+                    ),
+                    TextSpan(
+                      text: '新页',
+                      style: TextStyle(color: Colors.blue)
+                    )
+                  ]
+                )),
                 textColor: Colors.blue,
                 onPressed: () {
                     Navigator.pushNamed(context, '/myExam', arguments: {
