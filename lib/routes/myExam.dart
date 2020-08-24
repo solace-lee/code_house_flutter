@@ -1,24 +1,5 @@
 import 'package:flutter/material.dart';
 
-// class MyExam extends StatelessWidget {
-//     final argments;
-//     MyExam({ this.argments });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('haha')),
-//       body: Container(child: Text('我的试卷页')),
-//       floatingActionButton: FloatingActionButton(
-//         child: Text('返回'),
-//         onPressed: () {
-//           // Navigator.of(context).pop();
-//         },
-//       ),
-//     );
-//   }
-// }
-
 class MyExam extends StatefulWidget {
   final Map arguments;
   MyExam({Key key, this.arguments}) : super(key: key);
@@ -29,6 +10,10 @@ class MyExam extends StatefulWidget {
 class _MyExamState extends State<MyExam> {
   Map arguments;
   _MyExamState({this.arguments});
+
+  bool _switchSelected = true; // 维护单选开关状态
+  bool _checkboxSelected = true; // 维护复选框状态
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

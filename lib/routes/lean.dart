@@ -18,8 +18,20 @@ class _LeanPageState extends State<LeanPage> {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
-            RaisedButton(
-                child: Text.rich(TextSpan(
+            OutlineButton.icon(
+              onPressed: () {
+                    Navigator.pushNamed(context, '/myExam', arguments: {
+                      'title':'haha,成功了'
+                    });
+                },
+              icon: Text("\uE90D",
+                style: TextStyle(
+                    fontFamily: "MaterialIcons",
+                    fontSize: 28.0,
+                    color: Colors.green
+                ),
+              ),
+              label: Text.rich(TextSpan(
                   children: [
                     TextSpan(
                       text: '去吗?',
@@ -28,17 +40,12 @@ class _LeanPageState extends State<LeanPage> {
                       )
                     ),
                     TextSpan(
-                      text: '新页',
+                      text: '新',
                       style: TextStyle(color: Colors.blue)
                     )
                   ]
-                )),
-                textColor: Colors.blue,
-                onPressed: () {
-                    Navigator.pushNamed(context, '/myExam', arguments: {
-                      'title':'haha,成功了'
-                    });
-                })
+                ))
+            )
           ],
         ),
         decoration:
