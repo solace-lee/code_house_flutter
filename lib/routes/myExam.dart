@@ -22,6 +22,16 @@ class _MyExamState extends State<MyExam> {
         drawer: Drawer(
             child: Column(
           children: <Widget>[
+            Switch(value: _switchSelected, onChanged: (val) {
+              setState(() {
+                _switchSelected = val;
+              });
+            }),
+            Checkbox(value: _checkboxSelected, onChanged: (val) {
+              setState(() {
+                _checkboxSelected = val;
+              });
+            }),
             DrawerHeader(
               decoration: BoxDecoration(
                   color: Colors.yellow,
