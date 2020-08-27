@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'common/global.dart';
 import 'routes.dart';
 
 class GlobalConfig {
@@ -7,7 +8,7 @@ class GlobalConfig {
   static Color fontColor = Colors.black54;
 }
 
-void main() => runApp(MyApp());
+void main() => Global.init().then((e) => runApp(MyApp()));
 
 class MyApp extends StatelessWidget {
   @override

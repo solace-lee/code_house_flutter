@@ -1,3 +1,4 @@
+import 'package:codehouseflutter/common/global.dart';
 import 'package:flutter/material.dart';
 
 class MyExam extends StatefulWidget {
@@ -10,6 +11,8 @@ class MyExam extends StatefulWidget {
 class _MyExamState extends State<MyExam> {
   Map arguments;
   _MyExamState({this.arguments});
+
+  String appState = Global.appState;
 
   bool _switchSelected = true; // 维护单选开关状态
   bool _checkboxSelected = true; // 维护复选框状态
@@ -105,6 +108,9 @@ class _MyExamState extends State<MyExam> {
                           color: Theme.of(context).primaryColor,
                           textColor: Colors.white,
                           onPressed: () {
+                            print(this.appState);
+
+                            Global.saveAppState('3333333');
                             print(_formKey.currentState.toString());
                             if ((_formKey.currentState as FormState).validate()) {
                               print('可以提交数据了');
@@ -122,6 +128,8 @@ class _MyExamState extends State<MyExam> {
                       color: Theme.of(context).primaryColor,
                       textColor: Colors.white,
                       onPressed: () {
+                        print(Global.appState);
+
                         print(_formKey.currentState.toString());
                         if (Form.of(context).validate()) {
                           print('可以提交数据了');
