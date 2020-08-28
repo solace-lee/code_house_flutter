@@ -1,13 +1,15 @@
-import 'package:codehouseflutter/routes/lean.dart';
-import 'package:codehouseflutter/routes/myExam.dart';
-import 'package:codehouseflutter/routes/nav.dart';
+import 'routes/lean.dart';
+import 'routes/myExam.dart';
+import 'routes/nav.dart';
 import 'package:flutter/material.dart';
+import 'routes/stateTest.dart';
 
 // 配置路由
 final routes = {
     '/home': (context) => NavBar(),
     '/myExam': (context, {arguments}) => MyExam(arguments: arguments),
-    '/lean': (context) => LeanPage()
+    '/lean': (context) => LeanPage(),
+    '/stateTest': (context) => StateTest()
  };
 
 // 监听路由

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'common/Provider.dart';
 import 'common/global.dart';
 import 'routes.dart';
 
@@ -8,7 +10,13 @@ class GlobalConfig {
   static Color fontColor = Colors.black54;
 }
 
-void main() => Global.init().then((e) => runApp(MyApp()));
+void main() => Global.init().then((e) => runApp(
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => Counter()),
+    ],
+    child: MyApp(),
+)));
 
 class MyApp extends StatelessWidget {
   @override
