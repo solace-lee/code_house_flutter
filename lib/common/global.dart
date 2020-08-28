@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:event_bus/event_bus.dart';
+
+EventBus eventBus = EventBus();
 
 const _themes = <MaterialColor>[
   Colors.blue,
@@ -8,8 +11,18 @@ const _themes = <MaterialColor>[
   Colors.red
 ];
 
-class Global {
+enum Event { login }
 
+class UserLoggedInEvent {
+  Map<String, bool> user = {'login': true};
+
+  UserLoggedInEvent(user) {
+    this.user = user;
+    print('改变了');
+  }
+}
+
+class Global {
   // 可选的主题列表
   static List<MaterialColor> get themes => _themes;
 
@@ -18,11 +31,11 @@ class Global {
 
   static String appState = '初始化中';
 
-  static Future init () async {
+  static Future init() async {
     appState = '初始化完成';
   }
 
-  static saveAppState (String x) {
+  static saveAppState(String x) {
     appState = x;
   }
 }
