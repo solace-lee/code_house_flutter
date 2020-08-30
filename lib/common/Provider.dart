@@ -1,7 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'env.dart';
+
 class Counter with ChangeNotifier, DiagnosticableTreeMixin {
+
+  final Env config;
+
+  Counter({this.config}) : super();
+
   String _count = '0';
   String get count => _count;
 

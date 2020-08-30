@@ -1,3 +1,4 @@
+import 'package:codehouseflutter/common/env.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'common/Provider.dart';
@@ -13,7 +14,12 @@ class GlobalConfig {
 void main() => Global.init().then((e) => runApp(
   MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => Counter()),
+      ChangeNotifierProvider(create: (_) => Counter(
+        config: Env(
+          mode: EnvMode.DEVELOPMENT, // 使用开发环境
+          api: 'http://127.0.0.1:3000'
+        ),
+      )),
     ],
     child: MyApp(),
 )));
