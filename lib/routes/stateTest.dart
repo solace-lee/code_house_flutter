@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         // 改变变量
         onPressed: () {
-          print(context.read<Counter>().config.api);
+          // print(context.read<Counter>().config.api);
           context.read<Counter>().increment('哈哈454564566464');
         },
         tooltip: 'Increment',

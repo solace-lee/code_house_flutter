@@ -20,10 +20,10 @@ class _LeanPageState extends State<LeanPage> {
             ),
             OutlineButton.icon(
               onPressed: () {
-                    // Navigator.pushNamed(context, '/myExam', arguments: {
-                    //   'title':'haha,成功了'
-                    // });
-                    Navigator.pushNamed(context, '/stateTest');
+                    Navigator.pushNamed(context, '/myExam', arguments: {
+                      'title':'haha,成功了'
+                    });
+                    // Navigator.pushNamed(context, '/stateTest');
                 },
               icon: Text("\uE90D",
                 style: TextStyle(

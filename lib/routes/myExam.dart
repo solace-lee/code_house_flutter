@@ -1,4 +1,5 @@
 import 'package:codehouseflutter/common/global.dart';
+import 'package:codehouseflutter/common/env.dart';
 import 'package:flutter/material.dart';
 
 class MyExam extends StatefulWidget {
@@ -150,6 +151,7 @@ class _MyExamState extends State<MyExam> {
                     textColor: Colors.white,
                     onPressed: () {
                       print(Global.appState);
+                      print(Env().api);
 
                       print(_formKey.currentState.toString());
                       if (Form.of(context).validate()) {
