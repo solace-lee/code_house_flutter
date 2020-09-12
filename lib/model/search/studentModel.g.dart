@@ -9,7 +9,7 @@ part of 'studentModel.dart';
 StudentModel _$StudentModelFromJson(Map<String, dynamic> json) {
   return StudentModel(
     keywords: (json['keywords'] as List)?.map((e) => e as String)?.toList(),
-    detail: (json['detail'] as List)?.map((e) => e.toString())?.toList(),
+    detail: (json['detail'] as List)?.map((e) => e as String)?.toList(),
     id: json['_id'] as String,
     studentname: json['studentname'] as String,
     studentid: json['studentid'] as String,
@@ -18,7 +18,7 @@ StudentModel _$StudentModelFromJson(Map<String, dynamic> json) {
     meta: json['meta'] == null
         ? null
         : MetaModel.fromJson((json['meta'] as Map<String, dynamic>)?.map(
-            (k, e) => MapEntry(k, int.parse(e)),
+            (k, e) => MapEntry(k, e as int),
           )),
   );
 }
